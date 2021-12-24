@@ -1,0 +1,26 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "John",
+      "surname": "Doe",
+      "email": "user@email.com",
+      "issuedBook": 1123456789,
+      "issuedDate": "01/07/2021",
+      "returnDate": "01/12/2021",
+      "subscriptionType": "Basic",
+      "subscriptionDate": "01/07/2021"
+    },
+    {
+      "id": "2",
+      "name": "Jane",
+      "surname": "Doe",
+      "email": "user@email.com",
+      "issuedBook": 23124432121,
+      "issuedDate": "01/07/2021",
+      "returnDate": "01/10/2021",
+      "subscriptionType": "Basic",
+      "subscriptionDate": "01/07/2021"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "book_record_management",
+  "version": "1.0.0",
+  "description": "Book record management for book stored.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditya12gusain/book_record_management.git"
+  },
+  "author": "Aditya Gusain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aditya12gusain/book_record_management/issues"
+  },
+  "homepage": "https://github.com/aditya12gusain/book_record_management#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
