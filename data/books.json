@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "id": 1123456789,
+      "id": "1",
       "name": "The Hobbit",
       "author": "J.R.R. Tolkien",
       "genre": "Fantasy",
@@ -9,7 +9,15 @@
       "publisher": "Houghton Mifflin"
     },
     {
-      "id": 23124432121,
+      "id": "2",
+      "name": "The Land Before Time",
+      "author": "Alan Moore",
+      "genre": "Fantasy",
+      "price": "12.99",
+      "publisher": "Houghton Mifflin"
+    },
+    {
+      "id": "3",
       "name": "The Land Before Time",
       "author": "Alan Moore",
       "genre": "Fantasy",
