@@ -4,7 +4,7 @@ const { users } = require("../data/users.json");
 const router = express.Router();
 
 /**
- * Route: /user
+ * Route: /users
  * TYPE: GET
  * Description: Get all users
  * Access: Public
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 /**
- * Route: /user/:id
+ * Route: /users/:id
  * TYPE: GET
  * Description: Get user by id
  * Access: Public
@@ -42,6 +42,10 @@ router.get("/subscription-details/:id", (req, res) => {
   const user = users.find((each) => {
     return each.id === id;
   });
+
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
 
   const getDateInDays = (data = "") => {
     let date;
@@ -91,6 +95,84 @@ router.get("/subscription-details/:id", (req, res) => {
   };
 
   res.status(200).json({ success: true, data });
+});
+
+/**
+ * Route: /users
+ * TYPE: POST
+ * Description: Create new user
+ * Access: Public
+ * Parameters:
+ */
+router.post("/", (req, res) => {
+  // another approach of getting data from user
+  const { id, name, surname, email, subscriptionType, subscriptionDate } =
+    req.body.data;
+  const user = users.find((each) => each.id === id);
+  if (user) {
+    return res
+      .status(409)
+      .json({ success: false, message: "User already exists" });
+  }
+  users.push({
+    id,
+    name,
+    surname,
+    email,
+    subscriptionType,
+    subscriptionDate,
+  });
+  res.status(201).json({ success: true, data: users });
+});
+
+/**
+ * Route: /users/:id
+ * TYPE: PUT
+ * Description: Update a user details
+ * Access: Public
+ * Parameters: id
+ */
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const { data } = req.body;
+
+  const user = users.find((each) => each.id === id);
+
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
+
+  // const index = users.indexOf(user);
+
+  const updatedUser = users.map((each) => {
+    if (each.id === id) {
+      return {
+        ...each,
+        ...data,
+      };
+    }
+    return each;
+  });
+
+  return res.status(200).json({ success: true, data: updatedUser });
+});
+
+/**
+ * Route: /users/:id
+ * TYPE: DELETE
+ * Description: Delete a user
+ * Access: Public
+ * Parameters: id
+ */
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  const user = users.find((each) => each.id === id);
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
+  const index = users.indexOf(user);
+  users.splice(index, 1);
+  return res.status(200).json({ success: true, data: users });
 });
 
 module.exports = router;
