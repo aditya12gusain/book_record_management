@@ -1,8 +1,17 @@
 const express = require("express");
-const usersRouter = require("./routes/users");
-const booksRouter = require("./routes/books");
+const DbConnect = require("./databaseConnection");
+const usersRouter = require("./routes/user-route");
+const booksRouter = require("./routes/book-route");
+
+require("dotenv").config();
+// or
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 const app = express();
+
+// database connection
+DbConnect();
 
 app.use(express.json());
 
